@@ -1,0 +1,133 @@
+@font-face {
+    font-family: 'Pacifico';
+    src: url('../fonts/Pacifico-Regular.ttf') format('truetype');
+    font-weight: 400; /* Poids normal */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pacifico-bold';
+    src: url('../fonts/Pacifico-Regular.ttf') format('truetype');
+    font-weight: 700; /* Poids gras */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Arima';
+    src: url('../fonts/Arima-VariableFont_wght.ttf') format('truetype');
+    font-weight: 400; /* Poids normal */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Arima-bold';
+    src: url('../fonts/ArimaArima-VariableFont_wght.ttf') format('truetype');
+    font-weight: 700; /* Poids gras */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-Regular.ttf') format('truetype');
+    font-weight: 400; /* Poids normal */
+    font-style: normal;
+}
+
+header{
+    height: 670px;
+    flex-shrink: 0;
+    background-image: url(../images/header1.png);
+    background-position: 100% -400px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.navbar{
+    height: 93px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navName{
+    width: 25%;
+    height: 87px;
+    flex-shrink: 0;
+    border-radius: 25px;
+    background: #04471C;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    margin-top: 50px;
+
+}
+.boxListNav{
+    list-style: none;
+    display: flex;
+}
+.nom{
+    display: flex;
+    height: 78px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #FFF;
+    text-align: center;
+    font-family: Pacifico;
+    font-size: 35px;
+    font-weight: 400;
+    text-decoration: none;
+}
+.linkPage{
+    height: 40px;
+    border-radius: 25px;
+    background: #04471C;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    display: flex;
+    margin: 15px;
+    margin-top: 70px;
+    padding-inline: 1.5%;
+}
+.navName:hover{
+    height: 87px;
+    border-radius: 25px;
+    background: #936639;
+    box-shadow: 0px 4px 4px 0px #582F0E; 
+}
+.linkPage:hover{
+    background: #936639;
+    box-shadow: 0px 4px 4px 0px #582F0E; 
+
+}
+.linkPageA{
+    height: 33px;
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+    color: #FFF;
+    font-family: Arima;
+    font-size: 15px;
+    text-decoration: none;
+    margin-top: 5px;
+    text-align: center;
+}
+.boxExplan{
+    height: 30%;
+    border-radius: 25px;
+    border: 2px solid rgba(166, 138, 100, 0.60);
+    background: rgba(194, 197, 170, 0.60);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    margin-top: 320px;
+    margin-left: 20px;
+    margin-right: 20px;
+
+}
+.textExplan{
+    height: 20%;
+    color: #000;
+    font-family: Roboto;
+    font-size: 15px;
+    margin: 1%;
+    padding-top: 10px;
+}
+.linkPage.active {
+    background-color: #936639; 
+    box-shadow: 0px 4px 4px 0px #582F0E; 
+}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+    {% include "/components/cardListe.html.twig" with {'articles': articles} %}
+    
+
+{% endblock %}
