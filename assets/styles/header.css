@@ -56,6 +56,7 @@ header{
     background: #04471C;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     margin-top: 50px;
+    margin-right: 2%;
 
 }
 .boxListNav{
@@ -83,7 +84,7 @@ header{
     display: flex;
     margin: 15px;
     margin-top: 70px;
-    padding-inline: 1.5%;
+    padding-inline: 1.4%;
 }
 .navName:hover{
     height: 87px;
@@ -102,7 +103,7 @@ header{
     justify-content: center;
     display: flex;
     color: #FFF;
-    font-family: Arima;
+    font-family: Arima-bold;
     font-size: 15px;
     text-decoration: none;
     margin-top: 5px;
@@ -131,3 +132,8 @@ header{
     background-color: #936639; 
     box-shadow: 0px 4px 4px 0px #582F0E; 
 }
+.navName.active {
+    background-color: #936639; 
+    box-shadow: 0px 4px 4px 0px #582F0E; 
+}
+
