@@ -38,9 +38,11 @@ class AdminIngredientController extends AbstractController
             return $this->redirectToRoute('app_admin_ingredient_index', [], Response::HTTP_SEE_OTHER);
         }
 
+        
         return $this->render('admin_ingredient/new.html.twig', [
             'ingredient' => $ingredient,
             'form' => $form,
+            'pageActive' => 'ingredients',
         ]);
     }
 
@@ -49,6 +51,8 @@ class AdminIngredientController extends AbstractController
     {
         return $this->render('admin_ingredient/show.html.twig', [
             'ingredient' => $ingredient,
+            'pageActive' => 'ingredients',
+
         ]);
     }
 
@@ -67,6 +71,8 @@ class AdminIngredientController extends AbstractController
         return $this->render('admin_ingredient/edit.html.twig', [
             'ingredient' => $ingredient,
             'form' => $form,
+            'pageActive' => 'ingredients',
+
         ]);
     }
 

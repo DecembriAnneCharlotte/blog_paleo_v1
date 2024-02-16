@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des commentaires{% endblock %}
+
+{% block body %}
+    <h1>Gestion des commentaires</h1>
+
+    {% for comment in comments %}
+        <div class="comment">
+            <p>{{ comment.description }}</p>
+            <p>Posté par : {{ comment.user.name }}</p>
+            <form action="{{ path('comment_validate', {'id': comment.id}) }}" method="post">
+                <input type="hidden" name="_token" value="{{ csrf_token('validate-comment') }}">
+                <button type="submit">Valider le commentaire</button>
+            </form>
+        </div>
+    {% else %}
+        <p>Aucun commentaire à valider pour le moment.</p>
+    {% endfor %}
+{% endblock %}

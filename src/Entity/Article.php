@@ -33,15 +33,20 @@ class Article
     private ?Category $category = null;
 
     #[ORM\ManyToMany(targetEntity: Ingredient::class)]
+    #[ORM\JoinTable(name: "article_ingredient")]
     private Collection $ingredients;
 
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'favoris')]
     private Collection $users;
 
+    #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'article', cascade: ['persist', 'remove'])]
+    private $comments;
+
     public function __construct()
     {
         $this->ingredients = new ArrayCollection();
         $this->users = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -117,7 +122,7 @@ class Article
         return $this->ingredients;
     }
 
-    public function addIngredient(Ingredient $ingredient): static
+    public function addIngredient(Ingredient $ingredient): self
     {
         if (!$this->ingredients->contains($ingredient)) {
             $this->ingredients->add($ingredient);
@@ -126,7 +131,7 @@ class Article
         return $this;
     }
 
-    public function removeIngredient(Ingredient $ingredient): static
+    public function removeIngredient(Ingredient $ingredient): self
     {
         $this->ingredients->removeElement($ingredient);
 
@@ -155,6 +160,36 @@ class Article
     {
         if ($this->users->removeElement($user)) {
             $user->removeFavori($this);
+        }
+
+        return $this;
+    }
+
+     /**
+     * @return Collection|Comment[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comment $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comment $comment): self
+    {
+        if ($this->comments->removeElement($comment)) {
+            // set the owning side to null (unless already changed)
+            if ($comment->getArticle() === $this) {
+                $comment->setArticle(null);
+            }
         }
 
         return $this;

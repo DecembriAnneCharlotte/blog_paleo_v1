@@ -13,6 +13,7 @@
                 <th>Description</th>
                 <th>Photo</th>
                 <th>Date</th>
+                <th>Ingredients</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -24,6 +25,9 @@
                 <td>{{ article.description }}</td>
                 <td>{{ article.photo }}</td>
                 <td>{{ article.date ? article.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{% for ingredient in article.ingredients %}
+                        {{ ingredient.name }} {% if not loop.last %}, {% endif %}
+                    {% endfor %}</td>
                 <td>
                     <a href="{{ path('app_admin_articles_show', {'id': article.id}) }}">show</a>
                     <a href="{{ path('app_admin_articles_edit', {'id': article.id}) }}">edit</a>

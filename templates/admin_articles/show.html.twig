@@ -27,6 +27,12 @@
                 <th>Date</th>
                 <td>{{ article.date ? article.date|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
+            <tr>
+                <th>Ingredients</th>
+                <td>{% for ingredient in article.ingredients %}
+                        {{ ingredient.name }} {% if not loop.last %}, {% endif %}
+                    {% endfor %}</td>
+            </tr>
         </tbody>
     </table>
 

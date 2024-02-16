@@ -24,9 +24,13 @@ class Comment
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(targetEntity: Article::class, inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Article $article = null;
+
+    #[ORM\Column(type: Types::BOOLEAN)]
+    private ?bool $approuve = null;
+
 
     public function getId(): ?int
     {
@@ -77,6 +81,18 @@ class Comment
     public function setArticle(?Article $article): static
     {
         $this->article = $article;
+
+        return $this;
+    }
+
+    public function isApprouve(): ?bool
+    {
+        return $this->approuve;
+    }
+
+    public function setApprouve(bool $approuve): self
+    {
+        $this->approuve = $approuve;
 
         return $this;
     }

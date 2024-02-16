@@ -1,5 +1,38 @@
+@font-face {
+    font-family: 'Arima';
+    src: url('../fonts/Arima-VariableFont_wght.ttf') format('truetype');
+    font-weight: 400; /* Poids normal */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Arima-bold';
+    src: url('../fonts/Arima-VariableFont_wght.ttf') format('truetype');
+    font-weight: 700; /* Poids gras */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-Regular.ttf') format('truetype');
+    font-weight: 400; /* Poids normal */
+    font-style: normal;
+}
+
 body {
     background-color: #020202;
     color: white;
     margin: 0;
+}
+main{
+    width: 90%;
+    background-color: #0D2818;
+    margin-top: 45px;
+    margin-left: auto;
+    margin-right: auto;
+}
+h2{
+    font-family: Arima-bold;
+    padding-top: 20px;
+    margin-left: 2%;
 }

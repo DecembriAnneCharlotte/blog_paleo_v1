@@ -32,6 +32,12 @@ class AdminArticlesController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $selectedIngredients = $form->get('ingredients')->getData();
+
+            foreach ($selectedIngredients as $ingredient) {
+                $article->addIngredient($ingredient);
+            }
+
             $entityManager->persist($article);
             $entityManager->flush();
 
@@ -41,6 +47,7 @@ class AdminArticlesController extends AbstractController
         return $this->render('admin_articles/new.html.twig', [
             'article' => $article,
             'form' => $form,
+            'pageActive' => 'admin_articles',
         ]);
     }
 
@@ -49,6 +56,8 @@ class AdminArticlesController extends AbstractController
     {
         return $this->render('admin_articles/show.html.twig', [
             'article' => $article,
+            'pageActive' => 'admin_articles',
+
         ]);
     }
 
@@ -67,6 +76,8 @@ class AdminArticlesController extends AbstractController
         return $this->render('admin_articles/edit.html.twig', [
             'article' => $article,
             'form' => $form,
+            'pageActive' => 'admin_articles',
+
         ]);
     }
 

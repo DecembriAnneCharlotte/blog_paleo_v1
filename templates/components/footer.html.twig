@@ -1,29 +1,57 @@
 <footer>
-    <nav>
-        <ul>
+    <nav class="footerNavBar">
+        <ul class="footerBoxList">
             <li  class="footerNavName">
-                <a href="">Nom du blog</a>
+                <a class="nomFooter" href="">Nom du blog</a>
             </li>
-            <li>
-                <a href="">Accueil</a>
-            </li>
-            <li><a href="">Articles</a></li>
-            <li>
-                <a href="">Recettes</a>
-            </li>
-            <li>
-                <a href="">Catégories</a>
-            </li>
-            <li>
-                <a href="">Sport</a>
-            </li>
-            <li>
-                <a href="">Pourquoi</a>
-            </li>
-            <li>
-                <a href="">S'inscrire</a>
-            </li>
+        {% if is_granted('ROLE_ADMIN') %}
+            <li class="linkPageFooter {% if pageActive == 'articles' %}active{% endif %}">
+				<a class="linkPageAFooter" href="{{ path("app_admin_articles_index") }}">Articles</a>
+			</li>
+			<li class="linkPageFooter {% if pageActive == 'categories' %}active{% endif %}">
+				<a class="linkPageAFooter" href="{{ path("app_admin_category_index") }}">Catégories</a>
+			</li>
+            <li class="linkPageFooter {% if pageActive == 'ingredient' %}active{% endif %}">
+				<a class="linkPageAFooter" href="{{ path("app_admin_ingredient_index") }}">Ingredients</a>
+			</li>
+			<li class="linkPageFooter {% if pageActive == 'pourquoi' %}active{% endif %}">
+				<a class="linkPageAFooter" href="{{ path("app_pourquoi") }}">Commentaires</a>
+			</li>
+        {% else %}
+			<li class="linkPageFooter {% if pageActive == 'articles' %}active{% endif %}">
+				<a class="linkPageAFooter" href="{{ path("app_articles") }}">Articles</a>
+			</li>
+			<li class="linkPageFooter {% if pageActive == 'recettes' %}active{% endif %}">
+				<a class="linkPageAFooter" href="{{ path("app_recettes") }}">Recettes</a>
+			</li>
+			<li class="linkPageFooter {% if pageActive == 'categories' %}active{% endif %}">
+				<a class="linkPageAFooter" href="{{ path("app_categories") }}">Catégories</a>
+			</li>
+			<li class="linkPageFooter {% if pageActive == 'sport' %}active{% endif %}">
+				<a class="linkPageAFooter" href="{{ path("app_sport") }}">Sport</a>
+			</li>
+			<li class="linkPageFooter {% if pageActive == 'pourquoi' %}active{% endif %}">
+				<a class="linkPageAFooter" href="{{ path("app_pourquoi") }}">Pourquoi</a>
+			</li>
+        {% endif %}
+
+		{% if app.user %}
+				<li class="linkPageFooter {% if pageActive == 'profil' %}active{% endif %}">
+					<a class="linkPageAFooter" href="{{ path("app_profil") }}">Profil</a>
+				</li>
+                <li class="linkPageFooter {% if pageActive == 'logout' %}active{% endif %}">
+					<a class="linkPageAFooter" href="{{ path("app_logout") }}">Logout</a>
+				</li>
+
+		{% else %}
+				<li class="linkPageFooter {% if pageActive == 'login' %}active{% endif %}">
+					<a class="linkPageAFooter" href="{{ path("app_login") }}">Login</a>
+				</li>
+                <li class="linkPageFooter {% if pageActive == 'register' %}active{% endif %}">
+                    <a class="linkPageAFooter" href="{{ path("app_register") }}">S'inscrire</a>
+                </li>
+		{% endif %}
         </ul>
     </nav>
-    <p>Copyright@Machin</p>
+    <p class="copyright">Copyright@Machin</p>
 </footer>

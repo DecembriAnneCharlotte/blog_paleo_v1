@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Article detail
+{% endblock %}
+
+{% block body %}
+
+	<div class="card">
+		<img src="{{ article.photo }}" class="card-img-top" alt="...">
+		<div class="card-body">
+			<h5 class="card-title">{{article.title}}</h5>
+			<p class="card-text">{{ article.description|slice(0, 400) ~ (article.description|length > 400 ? '...' : '') }}</p>
+		</div>
+	</div>
+
+
+	{% if app.user %}
+		<h2>Laisser un commentaire :</h2>
+		<form action="{{ path('app_articles_comment_form', {'id': article.id}) }}" method="post">
+			{{ form_start(commentForm) }}
+			{{ form_row(commentForm.description) }}
+			<button type="submit" class="btn btn-primary">Envoyer</button>
+			{{ form_end(commentForm) }}
+		</form>
+
+		<h2>Commentaires :</h2>
+		{% for comment in article.comments %}
+			{% if comment.approuve %}
+				<div class="comment">
+					<p>{{ comment.description }}</p>
+					<small>{{ comment.date|date('Y-m-d H:i') }}</small>
+				</div>
+			{% endif %}
+		{% endfor %}
+	{% else %}
+		<h2>Commentaires :
+		</h2>
+		<p>Vous devez vous inscrire pour pouvoir voir ou laisser des commentaires.</p>
+	{% endif %}
+
+
+{% endblock %}

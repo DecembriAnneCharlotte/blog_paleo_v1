@@ -20,41 +20,41 @@
 }
 
 
-.card-container {
+.card-containerHome {
+    width: 80%;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between; 
-}
-
-.card{
-    position: relative;
-    width: 425px;
-    height: 500px;
-    margin-top: 20px;
-    margin-bottom: 20px;
     margin-left: auto;
     margin-right: auto;
 
+}
+
+.cardHome{
+    position: relative;
+    width: 100%;
+    height: 500px;
+    margin-bottom: 20px;
+    margin-top: 45px;
     border-radius: 25px;
     background: #A68A64;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
-.card-img-top{
-    width: 425px;
+.card-img-topHome{
+    width: 100%;
     height: 262px;
     border-radius: 25px 25px 0px 0px;
+    object-fit: cover;
 }
-.card-body{
-    width: 400px;
+.card-bodyHome{
+    width: 98.5%;
     height: 216px;
     border-radius: 25px;
     border: 2px solid #020202;
     background: #91A87E;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    margin-left: 9px;
+    margin-left: 0.6%;
     margin-top: 4px;
 }
-.card-title{
+.card-titleHome{
     display: flex;
     width: 100%;
     height: 25px;
@@ -67,8 +67,8 @@
     margin-left: 10px;
     margin-bottom: 25px;
 }
-.card-text{
-    width: 310px;
+.card-textHome{
+    width: 90%;
     height: 140px;
     color: #000;
     font-family: Roboto;
@@ -78,25 +78,23 @@
     line-height: normal;
     margin-left: 10px;
 }
-.cardBtn{
+.boxExplanHome{
     position: absolute;
-    top: 200px;
-    right: 10px;
-    width: 147px;
-    height: 44px;
+    height: 50px;
+    width: 25%;
     border-radius: 25px;
-    background: #058C42;
+    border: 2px solid rgba(166, 138, 100, 0.60);
+    background: rgba(194, 197, 170, 0.60);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    color: #FFF;
-    text-align: center;
+    top: 86%;
+    left: 15%;
+}
+.textExplanHome{
+    height: 50px;
+    color: #000;
     font-family: Arima-bold;
-    font-size: 23px;
-    font-style: normal;
-    padding-top: 7px;
-    text-decoration: none;
+    font-size: 25px;
+    margin-left: 5%;
+    margin-top: 1.2%;
 }
-.cardBtn:hover{
-    background: #936639;
-    box-shadow: 0px 4px 4px 0px #582F0E; 
 
-}
