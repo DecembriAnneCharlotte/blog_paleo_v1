@@ -1,11 +1,20 @@
 {% extends 'base.html.twig' %}
 
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Liste des recettes
+{% endblock %}
 
 {% block body %}
 
-    {% include "/components/cardListe.html.twig" with {'articles': articles} %}
-    
+	{% set articlesWithIngredients = [] %}
+	{% for article in articles %}
+		{% if article.ingredients is not empty %}
+			{% set articlesWithIngredients = articlesWithIngredients|merge([article]) %}
+		{% endif %}
+	{% endfor %}
+
+
+	{% include "/components/cardListe.html.twig" with {'articles': articlesWithIngredients, 'routeName':  'app_recettes_detail'} %}
+
 
 {% endblock %}

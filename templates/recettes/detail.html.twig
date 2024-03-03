@@ -11,13 +11,20 @@
 			<div class="card-bodyDetail">
 				<h5 class="card-titleDetail">{{article.title}}</h5>
 				<p class="card-textDetail">{{ article.description }}</p>
+				<p class="card-textDetail">
+					{% for ingredient in article.ingredients %}
+						{{ ingredient.name }}
+						{% if not loop.last %},
+						{% endif %}
+					{% endfor %}
+				</p>
 			</div>
 		</div>
 	</div>
 
 	{% if app.user %}
 		<h2>Laisser un commentaire :</h2>
-		<form action="{{ path('app_articles_comment_form', {'id': article.id}) }}" method="post">
+		<form action="{{ path('app_recettes_comment_form', {'id': article.id}) }}" method="post">
 			{{ form_start(commentForm) }}
 			{{ form_row(commentForm.description) }}
 			<button type="submit" class="btn btn-primary">Envoyer</button>
@@ -27,6 +34,9 @@
 		<h2>Commentaires :</h2>
 		{% for comment in article.comments %}
 			{% if comment.approuve %}
+            <div class="commentUser">
+                {# <h5>{{comment.user.name}}</h5> #}
+            </div>
 				<div class="comment">
 					<p>{{ comment.description }}</p>
 					<small>{{ comment.date|date('Y-m-d H:i') }}</small>

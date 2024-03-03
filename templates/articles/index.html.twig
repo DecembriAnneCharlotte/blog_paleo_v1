@@ -5,7 +5,14 @@
 
 {% block body %}
 
-    {% include "/components/cardListe.html.twig" with {'articles': articles} %}
+    {% set articlesWithoutIngredients = [] %}
+    {% for article in articles %}
+        {% if article.ingredients is empty %}
+            {% set articlesWithoutIngredients = articlesWithoutIngredients|merge([article]) %}
+        {% endif %}
+    {% endfor %}
+
+    {% include "/components/cardListe.html.twig" with {'articles': articlesWithoutIngredients, 'routeName':  'app_articles_detail'} %}
     
 
 {% endblock %}

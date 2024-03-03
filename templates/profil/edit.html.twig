@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier le profil de
+	{{ user.firstname }}
+	{{ user.name }}
+{% endblock %}
+
+{% block body %}
+	<h1>Modifier le profil de
+		{{ user.firstname }}
+		{{ user.name }}</h1>
+
+	{{ form_start(form) }}
+	{{ form_row(form.firstname) }}
+	{{ form_row(form.name) }}
+	{{ form_row(form.email) }}
+
+	<button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+	<a href="{{ path('user_profil', {'id': user.id}) }}" class="btn btn-secondary">Annuler</a>
+	{{ form_end(form) }}
+
+{% endblock %}

@@ -9,9 +9,13 @@
         <div class="comment">
             <p>{{ comment.description }}</p>
             <p>Posté par : {{ comment.user.name }}</p>
-            <form action="{{ path('comment_validate', {'id': comment.id}) }}" method="post">
+            <form action="{{ path('comment_validate', {'id': comment.id}) }}" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir valider ce commentaire ?')">
                 <input type="hidden" name="_token" value="{{ csrf_token('validate-comment') }}">
                 <button type="submit">Valider le commentaire</button>
+            </form>
+            <form action="{{ path('comment_delete', {'id': comment.id}) }}" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?')">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete-comment') }}">
+                <button type="submit">Supprimer le commentaire</button>
             </form>
         </div>
     {% else %}

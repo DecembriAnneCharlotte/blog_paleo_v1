@@ -37,7 +37,7 @@
 
 		{% if app.user %}
 				<li class="linkPage {% if pageActive == 'profil' %}active{% endif %}">
-					<a class="linkPageA" href="{{ path("app_profil") }}">Profil</a>
+					<a class="linkPageA" href="{{ path('user_profil', {'id': app.user.id}) }}">Profil</a>
 				</li>
                 <li class="linkPage {% if pageActive == 'logout' %}active{% endif %}">
 					<a class="linkPageA" href="{{ path("app_logout") }}">Logout</a>

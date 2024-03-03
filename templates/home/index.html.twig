@@ -25,7 +25,7 @@
 
 	<h2>Quelques recettes :</h2>
 
-	{% include "/components/cardListe.html.twig" with {'articles': articles} %}
+	{% include "/components/cardListe.html.twig" with {'articles': articles, 'routeName':  'app_recettes_detail'} %}
 
 
 {% endblock %}

@@ -20,9 +20,11 @@ class ArticlesController extends AbstractController
     {
         $articles = $articleRepository->findAll();
         $pageActive = 'articles';
+        $routeName = 'app_articles_detail';
         return $this->render('articles/index.html.twig', [
             'articles' => $articles,
             'pageActive' => $pageActive,
+            'routeName' => $routeName,
         ]);
     }
 
@@ -51,18 +53,6 @@ class ArticlesController extends AbstractController
         ]);
     }
 
-    // #[Route('/articles/{id}/comment-form', name: 'app_articles_comment_form')]
-    // public function commentForm(Article $article): Response
-    // {
-    //     $comment = new Comment();
-    //     $commentForm = $this->createForm(CommentType::class, $comment);
-
-    //     return $this->render('articles/detail.html.twig', [
-    //         'article' => $article,
-    //         'commentForm' => $commentForm->createView(),
-    //         'pageActive' => 'articles',
-    //     ]);
-    // }
 
     #[Route('/articles/{id}/comment-form', name: 'app_articles_comment_form')]
     public function commentForm(Article $article, Request $request, EntityManagerInterface $entityManager): Response
@@ -80,7 +70,6 @@ class ArticlesController extends AbstractController
             $entityManager->persist($comment);
             $entityManager->flush();
 
-            // Redirection vers une autre route après le traitement du formulaire
             return $this->redirectToRoute('app_articles_detail', ['id' => $article->getId()]);
         }
 
